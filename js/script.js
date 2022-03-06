@@ -6,6 +6,31 @@ const inputBox = searchWrapper.querySelector("input");
 const suggBox= searchWrapper.querySelector(".autocom");
 
 
+setInterval( removeText , 1000);
+
+
+function removeText(){
+    
+    var array=[];
+    var lastLetter;
+    var newArray=[];
+
+    if(inputBox.value){     
+        
+        array = inputBox.value;
+        lastLetter = array[array.length-1];
+        newArray = array.substring(0,array.length-1);
+        
+        inputBox.value = newArray;
+        suggBox.innerHTML = newArray;
+
+    }
+    
+    
+}
+
+
+
 
 inputBox.onkeyup = (e) =>{
     
@@ -13,8 +38,6 @@ inputBox.onkeyup = (e) =>{
     if(e.keyCode===32){console.log('fuck off')
             inputBox.value += words[Math.floor(Math.random() * 10)];
             inputBox.value += ' ';
-
-
     }
     
     let emptyArray =[];
