@@ -57,7 +57,7 @@ body{
 
 .search-input .autocom{
     padding: 0px;
-    max-height: 280px;
+    max-height: 320px;
     overflow-y: auto;
     opacity: 0;
     pointer-events: none;

@@ -6,7 +6,11 @@ const inputBox = searchWrapper.querySelector("input");
 const suggBox= searchWrapper.querySelector(".autocom");
 
 
-setInterval( removeText , 1000);
+// setInterval( removeText , 1000);
+
+var typingTimer;
+var doneTypingInterval = 2000;
+
 
 
 function removeText(){
@@ -16,28 +20,57 @@ function removeText(){
     var newArray=[];
 
     if(inputBox.value){     
-        
+    
         array = inputBox.value;
         lastLetter = array[array.length-1];
         newArray = array.substring(0,array.length-1);
         
         inputBox.value = newArray;
         suggBox.innerHTML = newArray;
+        
+        if(!newArray){
+             searchWrapper.classList.remove('active');
+
+        }
 
     }
+
+}
+
+
+inputBox.onkeydown = (e) =>{
     
+  clearTimeout(typingTimer);
     
 }
 
+
+//user is "finished typing," do something
+function doneTyping () {
+
+        inputBox.value += ' ';
+
+        inputBox.value += words[Math.floor(Math.random() * 10)];
+        inputBox.value += ' ';
+    
+//  typingTimer = setTimeout(doneTyping, doneTypingInterval);
+
+}
 
 
 
 inputBox.onkeyup = (e) =>{
     
+  clearTimeout(typingTimer);
+ //  typingTimer = setTimeout(doneTyping, doneTypingInterval);
+    
+    
     let userData=e.target.value;
-    if(e.keyCode===32){console.log('fuck off')
+    if(Math.random()<0.6){
+        if(e.keyCode=== 32 ){ // user finish the sentence
             inputBox.value += words[Math.floor(Math.random() * 10)];
             inputBox.value += ' ';
+    }
     }
     
     let emptyArray =[];
@@ -69,7 +102,10 @@ inputBox.onkeyup = (e) =>{
     }else{
         searchWrapper.classList.remove('active');
         }
-
+        
+    
+    
+    
     }
     
     
