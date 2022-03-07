@@ -12,6 +12,13 @@ var typingTimer;
 var doneTypingInterval = 2000;
 
 
+  function f1(el) {
+        var val = el.value;
+      console.log(el.selectionStart);
+     //   console.log(val.slice(0, el.selectionStart).length);
+    }
+
+
 
 function removeText(){
     
@@ -30,7 +37,6 @@ function removeText(){
         
         if(!newArray){
              searchWrapper.classList.remove('active');
-
         }
 
     }
@@ -39,6 +45,9 @@ function removeText(){
 
 
 inputBox.onkeydown = (e) =>{
+    
+    f1(document.getElementById('t1'))
+    
     
   clearTimeout(typingTimer);
     
@@ -53,26 +62,28 @@ function doneTyping () {
         inputBox.value += words[Math.floor(Math.random() * 10)];
         inputBox.value += ' ';
     
-//  typingTimer = setTimeout(doneTyping, doneTypingInterval);
+  typingTimer = setTimeout(doneTyping, doneTypingInterval);
 
 }
 
-
+let txt;
 
 inputBox.onkeyup = (e) =>{
     
   clearTimeout(typingTimer);
- //  typingTimer = setTimeout(doneTyping, doneTypingInterval);
-    
+   typingTimer = setTimeout(doneTyping, doneTypingInterval);
     
     let userData=e.target.value;
     if(Math.random()<0.6){
         if(e.keyCode=== 32 ){ // user finish the sentence
+            
+            txt = input.value;
+            
+            
             inputBox.value += words[Math.floor(Math.random() * 10)];
             inputBox.value += ' ';
     }
     }
-    
     let emptyArray =[];
     if(userData){
         emptyArray= suggestions.filter((data)=>{
