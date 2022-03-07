@@ -62,7 +62,6 @@ function doneTyping () {
         inputBox.value += words[Math.floor(Math.random() * 10)];
         inputBox.value += ' ';
     
-  typingTimer = setTimeout(doneTyping, doneTypingInterval);
 
 }
 
@@ -71,6 +70,7 @@ let txt;
 inputBox.onkeyup = (e) =>{
     
   clearTimeout(typingTimer);
+    
    typingTimer = setTimeout(doneTyping, doneTypingInterval);
     
     let userData=e.target.value;
