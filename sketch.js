@@ -251,9 +251,8 @@ function init(){
              wrapper[0].innerHTML='<img src="images/beat.png" alt="Girl in a jacket" width="80%" height="auto">'
                 break;
                  
-                 
                 default:
-             wrapper[0].innerHTML='<img src="images/cene0'+ Math.floor(Math.random() *5 )+ '.png" alt="Girl in a jacket" width="80%" height="auto">'
+             wrapper[0].innerHTML='<img src="images/cene0'+ Math.floor(Math.random() * 6 )+ '.png" alt="Girl in a jacket" width="80%" height="auto">'
                 break;
                     
                     
