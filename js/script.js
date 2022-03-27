@@ -8,6 +8,58 @@ const suggBox= searchWrapper.querySelector(".autocom");
 
 // setInterval( removeText , 1000);
 
+let charIndex=0;
+
+
+document.addEventListener("keydown",()=>{
+    inputBox.focus();
+    
+} );
+
+
+
+
+
+window.onload=function(){
+    
+    let myInterval = setInterval( love ,3000);
+
+    
+};
+
+function love(){
+    
+    inputBox.placeholder= suggestions[Math.floor(Math.random() * suggestions.length)] ;
+}
+
+
+
+
+
+
+
+
+
+function myStopFunction() {
+  clearInterval(myInterval);
+}
+
+
+function addText(){
+    if(!inputBox.value){
+         searchWrapper.classList.remove('active');
+
+        inputBox.value =  suggestions[Math.floor(Math.random() * suggestions.length)];
+    }else{
+         searchWrapper.classList.add('active');
+        showSuggestions(inputBox.value);
+        
+    }
+           
+
+}
+
+
 var typingTimer;
 var doneTypingInterval = 2000;
 
@@ -29,7 +81,7 @@ function removeText(){
     if(inputBox.value){     
     
         array = inputBox.value;
-        lastLetter = array[array.length-1];
+        lastLetter = array[array.length-1]; // last letter 
         newArray = array.substring(0,array.length-1);
         
         inputBox.value = newArray;
@@ -44,7 +96,15 @@ function removeText(){
 }
 
 
+
+
+
+
+
+
 inputBox.onkeydown = (e) =>{
+    
+
     
     f1(document.getElementById('t1'))
     
@@ -58,20 +118,21 @@ inputBox.onkeydown = (e) =>{
 function doneTyping () {
 
         inputBox.value += ' ';
-
         inputBox.value += words[Math.floor(Math.random() * 10)];
         inputBox.value += ' ';
     
-
 }
+
+
+
 
 let txt;
 
 inputBox.onkeyup = (e) =>{
     
-  clearTimeout(typingTimer);
+  // clearTimeout(typingTimer);
     
-   typingTimer = setTimeout(doneTyping, doneTypingInterval);
+ //  typingTimer = setTimeout(doneTyping, doneTypingInterval);
     
     let userData=e.target.value;
     if(Math.random()<0.6){
