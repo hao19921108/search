@@ -264,6 +264,7 @@ function init(){
         
         
 //        inputBox.value="This input field is sponsored by";
+        inputBox.value+=' '
         inputBox.style.color ="#000";
         
 //        emptyInterval = setInterval(removeText,1000);
@@ -276,8 +277,9 @@ function init(){
     
 }
 
+let threshold = 5000;
 
-let maxTimeOut = 3000;
+let maxTimeOut = threshold;
 
 function colorCheck(){
     
@@ -288,7 +290,7 @@ function colorCheck(){
     }
     
     if(maxTimeOut<1){
-        maxTimeOut = 3000;    
+        maxTimeOut = threshold;    
         input[0].style.color="lightgray";
 
         myFunction();
@@ -346,7 +348,7 @@ function removeText(){
 
 
 if(!isTyping){
-    if(!input[0]){ myInterval = setInterval( myFunction,2000);}
+    if(!input[0]){ myInterval = setInterval( myFunction, 5000);}
 }
 
 var messages=["Rolex","Ferrari","Cartier","Dior","Baidu","Tiktok","Risotto Restaurant","Okonomiyaki Recipe Company","Sykiyaki Maker","Covid","Ribeye Youtuber",'Tsunami Lover','Balenciaga','Okinawa Hater','Air Jordan 4 Collector','Apple',"Banana's republic","McLaren","Estee Lauder","Fendi","Gucci","Hermes","IKEA","Bentley","Kia","Ford","Loro Piana","Microsoft Top Secret","Nike","SK-II","Lululemon","Opensea","Porsche","Prada","Rolex","Omega","Starbucks","SSENSE","GOAT","Tiffany&Co","Moncler","Acne Studio",'LOEWE','Valentino',"Y3","Yeezy","Yelp","Omega","Bulgari","COACH","Lancome","CHANEL","Hao","Givenchy","HONDA","Bottega Veneta","BMW",'Supreme',"Mercedes","Victoria's Secret","Armani","Van Cleef & Arpels",'Needs money','Hao','Dolce & Gabbana','Rich Daddy',"Sugar Mommy","Candyboy","Yves Saint Laurent",'Lamborghini','Yeezy','LV','Salvatore Ferragamo','Maserati','Burberry','Rolls Royce'];
@@ -369,7 +371,7 @@ function myFunction(){
 
 
 
-if(!document.body){ setInterval( addBlackBox,1000);
+if(!document.body){ setTimeout( addBlackBox,1000);
 }
 
 
@@ -414,7 +416,7 @@ function addBlackBox(){
         document.getElementsByClassName('gn_logo').innerHTML='';
         document.getElementsByClassName('copyright')[0].innerHTML='';
         document.getElementsByClassName('logo')[0].innerHTML='';
-        
+        myFunction();
          GFG_Fun();
         document.getElementsByTagName('title')[0].innerHTML='Search Search';
  //document.getElementsByClassName('s-btn-b')[0].innerText='瞎看看';

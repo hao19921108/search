@@ -3,6 +3,14 @@
         -webkit-filter: blur(3px);
 }
 
+ .blur:hover{
+        filter: blur(0px);
+        -webkit-filter: blur(0px);
+}
+
+
+
+
 
 .newPage{
     
