@@ -1,0 +1,25 @@
+ .blur {
+        filter: blur(3px);
+        -webkit-filter: blur(3px);
+}
+
+
+.newPage{
+    
+    position:fixed;
+    left: 200px;
+}
+
+.m-search input{
+    color: lightgray;
+}
+
+
+.wrapper{
+    position: fixed;
+    z-index: 20;
+    width: auto;
+    justify-content: center;
+    align-content: center;
+    
+}
