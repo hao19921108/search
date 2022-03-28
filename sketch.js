@@ -1,8 +1,7 @@
 let searchInput = document.getElementsByClassName("search-input");
 let input = document.getElementsByTagName('input');
-
-         let wrapper = document.getElementsByClassName("wrapper");
-         let container = document.getElementsByClassName("container");
+ let wrapper = document.getElementsByClassName("wrapper");
+let button;
 
 
 let inputBox=0;
@@ -26,9 +25,11 @@ setTimeout(init,1000);
 
 
 
+
 function init(){
     
     inputBox= input[0];
+    button= document.getElementsByClassName("s-btn-b")[0];
     
 //    inputBox.style.border='1px solid black'
     
@@ -307,9 +308,12 @@ function init(){
 let threshold = 5000;
 
 let maxTimeOut = threshold;
-let secretCode=['HOW TO GET ATTENTION FROM YOU',"如何获得用户关注？","为什么不点击搜索框呢？","这个人到底在干嘛？","看看别的网站怎么吸引用户的?","怎么还不点击，是我不够好嘛？"]
+let secretCode=['想要来自己打字嘛',"想点点搜索框嘛","随便搜点呗","如何获得用户关注？","这个人到底在干嘛？怎么那么不听话","我倒要看看别的网站怎么吸引用户的?","怎么还不点击，是我不够好嘛？"]
+let blinkDivide =3;
 
 let currentInput ='';
+
+let secretIndex=0;
 
 function colorCheck(){
     
@@ -320,15 +324,40 @@ function colorCheck(){
     if( clickCountdown<200){
         console.log('I need a dick');
         input[0].style.border='1px solid black';
-
+        
+               
         // something is gonna happen here. 
         currentInput = inputBox.value;// cureent   
         input[0].style.color="rgb(0, 0, 0)"; // cureent shit is black
-        inputBox.value = secretCode[Math.floor(Math.random() * secretCode.length)];
+        secretIndex = Math.floor(Math.random() * secretCode.length);
+        
+        if(secretIndex> blinkDivide  ){
+             button.classList.add('back');
+
+        }
+        inputBox.value = secretCode[ secretIndex ];
         clickCountdown = clickTimeOut;
         
     }else{
+        
+        if(secretIndex < blinkDivide ){
+            
+            if(button.classList.contains('back')){
+            button.classList.remove('back');
+        }
 
+        }else{
+            
+         
+        if(  input[0].style.border=='1px solid black'){       
+        if(button.classList.contains('back')){
+            button.classList.remove('back');
+            }else{ 
+            button.classList.add('back');
+            }
+        } 
+        
+        }
     }
     
     // change words every 5 seconds.
@@ -342,6 +371,8 @@ function colorCheck(){
     }
     
     if(maxTimeOut<1){
+        
+        
         
         myInterval = setInterval( myFunction, threshold);
         input[0].style.border='1px solid lightgrey';
@@ -461,7 +492,7 @@ function addBlackBox(){
         for( m=0;m<linksArray.length;m++){
             
             if(m!=67 || m!=65){
-                
+
                 linksArray[m].classList.add('blur');
 
             }
