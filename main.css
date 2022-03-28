@@ -11,7 +11,6 @@
 
 
 
-
 .newPage{
     
     position:fixed;
@@ -31,3 +30,14 @@
     align-content: center;
     
 }
+
+
+.container{
+    position: fixed;
+    z-index: 20;
+    width: auto;
+    justify-content: center;
+    align-content: center;
+    
+}
+

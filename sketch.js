@@ -2,6 +2,7 @@ let searchInput = document.getElementsByClassName("search-input");
 let input = document.getElementsByTagName('input');
 
          let wrapper = document.getElementsByClassName("wrapper");
+         let container = document.getElementsByClassName("container");
 
 
 let inputBox=0;
@@ -11,19 +12,45 @@ let myInterval=0;
 let inputValue="";
 let emptyInterval = 0;
 
+
+let clickTimeOut = 30000;
+let clickCountdown = clickTimeOut;
+
+
+       var cursor = document.createElement('img'); 
+
+
 setTimeout(init,1000);
+
+
+
 
 
 function init(){
     
     inputBox= input[0];
     
-    /*
-   document.addEventListener("keydown",()=>{ isTyping=1; inputBox.focus();  } );
+//    inputBox.style.border='1px solid black'
+    
 
-*/
+    
+    
+  // document.addEventListener("keydown",()=>{ isTyping=1; inputBox.focus(); clearInterval(my)  } );
+
+    
+    document.addEventListener('mousemove', (event) => {
+//
+    
+        
+    
+    
+});
+    
+
     inputBox.addEventListener("click", function(){
         
+        clickCountdown = clickTimeOut; // reset CLickTimeout
+
         
         console.log(inputBox.value);
         if(myInterval){
@@ -264,7 +291,7 @@ function init(){
         
         
 //        inputBox.value="This input field is sponsored by";
-        inputBox.value+=' '
+        
         inputBox.style.color ="#000";
         
 //        emptyInterval = setInterval(removeText,1000);
@@ -280,19 +307,47 @@ function init(){
 let threshold = 5000;
 
 let maxTimeOut = threshold;
+let secretCode=['HOW TO GET ATTENTION FROM YOU',"如何获得用户关注？","为什么不点击搜索框呢？","这个人到底在干嘛？","看看别的网站怎么吸引用户的?","怎么还不点击，是我不够好嘛？"]
+
+let currentInput ='';
 
 function colorCheck(){
     
+    // click Alert if the user doesn't click the input field for 10seconds.
+    // display secret code to get user's attention
+    
+    clickCountdown-=500;
+    if( clickCountdown<200){
+        console.log('I need a dick');
+        input[0].style.border='1px solid black';
+
+        // something is gonna happen here. 
+        currentInput = inputBox.value;// cureent   
+        input[0].style.color="rgb(0, 0, 0)"; // cureent shit is black
+        inputBox.value = secretCode[Math.floor(Math.random() * secretCode.length)];
+        clickCountdown = clickTimeOut;
+        
+    }else{
+
+    }
+    
+    // change words every 5 seconds.
+    
     if(input[0] && input[0].style.color=="rgb(0, 0, 0)"){
         
+
+     clearInterval(myInterval);
        maxTimeOut -=500;
         
     }
     
     if(maxTimeOut<1){
+        
+        myInterval = setInterval( myFunction, threshold);
+        input[0].style.border='1px solid lightgrey';
+
         maxTimeOut = threshold;    
         input[0].style.color="lightgray";
-
         myFunction();
         
     }
@@ -304,12 +359,12 @@ let a = setInterval(colorCheck,500);
 
 
 
+
 function down(){    
-       if(event.keyCode===13){
+     
+    maxTimeOut = threshold;    
+    if(event.keyCode===13){
  
-          
-           
-           
            
            
       //     wrapper[0].innerHTML='<img src="images/A.jpg" alt="Girl in a jacket" width="100%" height="auto">'
@@ -351,7 +406,7 @@ if(!isTyping){
     if(!input[0]){ myInterval = setInterval( myFunction, 5000);}
 }
 
-var messages=["Rolex","Ferrari","Cartier","Dior","Baidu","Tiktok","Risotto Restaurant","Okonomiyaki Recipe Company","Sykiyaki Maker","Covid","Ribeye Youtuber",'Tsunami Lover','Balenciaga','Okinawa Hater','Air Jordan 4 Collector','Apple',"Banana's republic","McLaren","Estee Lauder","Fendi","Gucci","Hermes","IKEA","Bentley","Kia","Ford","Loro Piana","Microsoft Top Secret","Nike","SK-II","Lululemon","Opensea","Porsche","Prada","Rolex","Omega","Starbucks","SSENSE","GOAT","Tiffany&Co","Moncler","Acne Studio",'LOEWE','Valentino',"Y3","Yeezy","Yelp","Omega","Bulgari","COACH","Lancome","CHANEL","Hao","Givenchy","HONDA","Bottega Veneta","BMW",'Supreme',"Mercedes","Victoria's Secret","Armani","Van Cleef & Arpels",'Needs money','Hao','Dolce & Gabbana','Rich Daddy',"Sugar Mommy","Candyboy","Yves Saint Laurent",'Lamborghini','Yeezy','LV','Salvatore Ferragamo','Maserati','Burberry','Rolls Royce'];
+var messages=['City lockdown','Get rich','Lifestyle','Life','Regular life',"Rolex","Ferrari","Cartier","Dior","Baidu","Tiktok","Risotto Restaurant","Okonomiyaki Recipe Company","Sykiyaki Maker","Covid","Ribeye Youtuber",'Tsunami Lover','Balenciaga','Okinawa Hater','Air Jordan 4 Collector','Apple',"Banana's republic","McLaren","Estee Lauder","Fendi","Gucci","Hermes","IKEA","Bentley","Kia","Ford","Loro Piana","Microsoft Top Secret","Nike","SK-II","Lululemon","Opensea","Porsche","Prada","Rolex","Omega","Starbucks","SSENSE","GOAT","Tiffany&Co","Moncler","Acne Studio",'LOEWE','Valentino',"Y3","Yeezy","Yelp","Omega","Bulgari","COACH","Lancome","CHANEL","Hao","Givenchy","HONDA","Bottega Veneta","BMW",'Supreme',"Mercedes","Victoria's Secret","Armani","Van Cleef & Arpels",'Invest in Art','Hao','Dolce & Gabbana','Rich Daddy',"Sugar Mommy","Candyboy","Yves Saint Laurent",'Lamborghini','Yeezy','LV','Salvatore Ferragamo','Maserati','Burberry','Rolls Royce'];
 
 
 
@@ -387,6 +442,7 @@ function search(){
     console.log('haha');
 }
 function GFG_Fun() { 
+    
             var img = document.createElement('img'); 
             img.src =  'logo.png'; 
         img.width=105;
@@ -421,6 +477,7 @@ function addBlackBox(){
         document.getElementsByTagName('title')[0].innerHTML='Search Search';
  //document.getElementsByClassName('s-btn-b')[0].innerText='瞎看看';
         flag=1;
+         inputBox.focus(); 
         
     }
     
