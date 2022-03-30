@@ -16,13 +16,36 @@ let clickTimeOut = 30000;
 let clickCountdown = clickTimeOut;
 
 
-       var cursor = document.createElement('img'); 
+var cursor = document.createElement('img'); 
 
 
 setTimeout(init,1000);
 
 
+var changeBlurryText = setInterval( BlurryTextUpdate , 60000);
 
+
+function BlurryTextUpdate(){
+    
+    
+    
+    linksArray=document.getElementsByTagName('a');
+
+  //  console.log(linksArray[3].href);
+    
+    
+    
+    for(var j=0; j<newsTitle.length; j++){
+        
+    //
+    linksArray[3+j].innerText = newsTitle[j];    
+        
+    //
+    //
+        
+        
+    }
+}
 
 
 
@@ -31,11 +54,7 @@ function init(){
     inputBox= input[0];
     button= document.getElementsByClassName("s-btn-b")[0];
     
-//    inputBox.style.border='1px solid black'
-    
-
-    
-    
+//  inputBox.style.border='1px solid black'
   // document.addEventListener("keydown",()=>{ isTyping=1; inputBox.focus(); clearInterval(my)  } );
 
     
@@ -467,7 +486,6 @@ if(!document.body){ setTimeout( addBlackBox,1000);
 let m=1 , n= 56;
 let linksArray;
 
-
 function search(){
     
     console.log('haha');
@@ -498,7 +516,6 @@ function addBlackBox(){
             }
             
         }
-        
         
         document.getElementsByClassName('gn_logo').innerHTML='';
         document.getElementsByClassName('copyright')[0].innerHTML='';
